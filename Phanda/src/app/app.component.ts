@@ -67,7 +67,7 @@ export class AppComponent {
     this.auth.logoutUser()
     .then(res => {
       console.log(res);
-      this.navCtrl.navigateBack('home');
+      this.navCtrl.navigateBack('/home');
     })
     .catch(error => {
       console.log(error);
