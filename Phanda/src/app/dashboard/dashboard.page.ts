@@ -18,11 +18,11 @@ export class DashboardPage implements OnInit {
  
   ngOnInit(){
     
-    if(this.authService.userDetails()){
-      this.userEmail = this.authService.userDetails().email;
-    }else{
-      this.navCtrl.navigateBack('');
-    }
+    // if(this.authService.userDetails()){
+    //   this.userEmail = this.authService.userDetails().email;
+    // }else{
+    //   this.navCtrl.navigateBack('');
+    // }
   }
  
   logout(){

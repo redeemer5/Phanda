@@ -3,12 +3,29 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {AuthenticationService } from '../app/services/authentication.service'
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    private auth: AuthenticationService,
+    private navCtrl: NavController,
+    private router: Router
+  ) {
+    this.initializeApp();
+  }
+
+
   public appPages = [
     {
       title: 'Home',
@@ -25,30 +42,37 @@ export class AppComponent {
       url: '/menu',
       icon: 'pizza'
     },
-    // {
-    //   title: 'Cart',
-    //   url: '/cart',
-    //   icon: 'cart'
-    // },
+    {
+      title:'Profile',
+      url: '/profile',
+      icon: 'person'
+    },
     {
       title: 'Sign-out',
-      url: 'll',
-      icon: 'log-out'
+      url: 'home',
+      icon: 'log-out',
+      handles: this.logout(),
     }
   ];
 
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
-  ) {
-    this.initializeApp();
-  }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout(){
+    this.auth.logoutUser()
+    .then(res => {
+      console.log(res);
+      // this.navCtrl.navigateBack('home');
+      this.router.navigate(['/login']);
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }

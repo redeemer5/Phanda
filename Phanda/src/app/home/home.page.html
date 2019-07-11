@@ -1,7 +1,19 @@
 
 <ion-content padding>
-  <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
+  
  
+
+    <ion-card>
+      <ion-card-title> <h2> Phanda </h2> </ion-card-title>
+      <ion-card-subtitle>Where food is !</ion-card-subtitle>
+
+      <ion-card-content>
+        <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
+
+          <!-- error message label -->
+    <label class="error-message">{{errorMessage}}</label>
+
+
     <ion-item>
       <ion-label  position="floating" color="primary">Email</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
@@ -26,11 +38,13 @@
       </ng-container>
     </div>
  
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Log In</ion-button>
- 
-    <label class="error-message">{{errorMessage}}</label>
+    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid" expand="block" margin>Log In</ion-button>
   </form>
-  <p class="go-to-register">
+
+  </ion-card-content>
+  </ion-card>
+    
+  <p>
     No account yet? <a (click)="goToRegisterPage()">Create an account.</a>
   </p>
 </ion-content>
