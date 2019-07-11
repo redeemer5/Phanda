@@ -25,11 +25,11 @@ export class AppComponent {
       url: '/menu',
       icon: 'pizza'
     },
-    {
-      title: 'Cart',
-      url: '/cart',
-      icon: 'cart'
-    },
+    // {
+    //   title: 'Cart',
+    //   url: '/cart',
+    //   icon: 'cart'
+    // },
     {
       title: 'Sign-out',
       url: 'll',
