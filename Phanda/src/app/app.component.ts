@@ -49,7 +49,6 @@ export class AppComponent {
     },
     {
       title: 'Sign-out',
-      url: 'home',
       icon: 'log-out',
       handles: this.logout(),
     }
@@ -68,8 +67,7 @@ export class AppComponent {
     this.auth.logoutUser()
     .then(res => {
       console.log(res);
-      // this.navCtrl.navigateBack('home');
-      this.router.navigate(['/login']);
+      this.navCtrl.navigateBack('home');
     })
     .catch(error => {
       console.log(error);
