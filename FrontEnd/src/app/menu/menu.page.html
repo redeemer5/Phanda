@@ -19,10 +19,12 @@
 <ion-content>
 
     <div *ngFor="let user of user$">
-          <p>{{user.id}}</p>
-          <p> {{ user.name}} </p>
-          <p> {{user.price }}</p>
-          <ion-button>add</ion-button>
+      <ion-card (click)="addToCart(product)">
+        <!-- <p>{{user.id}}</p> -->
+        <ion-card-title> <img src="../../assets/burger.jpg">  </ion-card-title>
+        <ion-card-subtitle> {{ user.name}} <br /> R {{user.price }} </ion-card-subtitle>
+        <!-- <ion-button (click)="addToCart(product)">add</ion-button> -->
+      </ion-card>
   </div>
 
 

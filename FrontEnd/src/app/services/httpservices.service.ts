@@ -10,6 +10,6 @@ export class HttpservicesService {
 
 
   getMenu() {
-    return this.http.get('http://localhost:8080/getMenu');
+    return this.http.get('http://localhost:8081/getMenu');
  }
 }
