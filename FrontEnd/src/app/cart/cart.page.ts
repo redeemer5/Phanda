@@ -18,10 +18,10 @@ export class CartPage implements OnInit {
     let items = this.cartService.getCart();
     let selected = {};
     for (let obj of items) {
-      if (selected[obj.id]) {
-        selected[obj.id].count++;
+      if (selected[obj]) {
+        selected[obj].count++;
       } else {
-        selected[obj.id] = {...obj, count: 1};
+        selected[obj] = {...obj, count: 1};
       }
     }
     this.selectedItems = Object.keys(selected).map(key => selected[key])
