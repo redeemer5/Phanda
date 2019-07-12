@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { HttpservicesService} from '../services/httpservices.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +10,12 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
+
+  user$: Object;
+  users: any;
+  user: string;
+  users$:Object;
+
 
   cart = [];
   items = [];
@@ -18,11 +26,15 @@ export class MenuPage implements OnInit {
     centeredSlides: true
   };
  
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService,private http: HttpservicesService) { }
  
   ngOnInit() {
     this.items = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
+    
+    this.http.getMenu().subscribe(
+      http => this.user$ = http
+    );
   }
  
   addToCart(product) {
@@ -32,5 +44,8 @@ export class MenuPage implements OnInit {
   openCart() {
     this.router.navigate(['cart']);
   }
+
+
+
 
 }

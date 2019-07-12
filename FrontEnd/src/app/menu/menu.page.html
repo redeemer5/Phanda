@@ -3,7 +3,6 @@
     <ion-title>
       Menu
     </ion-title>
-
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/dashboard"></ion-back-button>
     </ion-buttons>
@@ -18,7 +17,16 @@
 </ion-header>
  
 <ion-content>
-  <div *ngFor="let cat of items" class="category-block">
+
+    <div *ngFor="let user of user$">
+          <p>{{user.id}}</p>
+          <p> {{ user.name}} </p>
+          <p> {{user.price }}</p>
+          <ion-button>add</ion-button>
+  </div>
+
+
+  <!-- <div *ngFor="let cat of items" class="category-block">
  
     <ion-row no-padding class="category-banner">
       <ion-col text-left button tappable (click)="cat.expanded = !cat.expanded" align-self-center>
@@ -44,5 +52,5 @@
       </ion-slide>
     </ion-slides>
  
-  </div>
+  </div> -->
 </ion-content>

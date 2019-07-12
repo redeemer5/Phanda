@@ -48,4 +48,6 @@ export class CartService {
   addProduct(product) {
     this.cart.push(product);
   }
+
+  
 }

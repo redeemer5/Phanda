@@ -17,6 +17,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
  
 import * as firebase from 'firebase';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
  
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -25,6 +27,7 @@ firebase.initializeApp(environment.firebaseConfig);
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
