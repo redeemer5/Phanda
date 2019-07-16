@@ -11,15 +11,12 @@
 
   <h3> Selected items </h3>
   <h4> Confirm your order </h4>
+  
   <ion-list> 
 
     <ion-item  *ngFor="let item of selectedItems" lines="inset">
-      <ion-card>
-        <ion-card-content>
           <p> {{ item.name }} - {{ item.price | currency:'R ':'symbol' }} </p>
           <ion-label slot="end" text-right>{{ (item.price * item.count) | currency:'R ':'symbol' }}</ion-label>
-        </ion-card-content>
-      </ion-card>
     </ion-item>
 
     <ion-item>
