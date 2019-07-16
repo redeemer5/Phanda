@@ -17,23 +17,10 @@ export class CartPage implements OnInit {
   ngOnInit() {
     
     let items:any = this.cartService.getCart();
-    let selected = {};
-    
-    // for (let obj of items) {
-    //   if (selected[obj]) {
-    //     selected[obj].count++;
-    //   } else {
-    //     selected[obj] = {...obj, count: 1};
-    //   }
-    // }
-
+   // let selected = {};
     this.selectedItems = items;
-
-
     let price = 0;
-
     this.selectedItems.map((item) => price += item.price );
-
     this.total = price;
 
   }
