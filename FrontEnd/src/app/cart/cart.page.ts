@@ -22,7 +22,6 @@ export class CartPage implements OnInit {
     let price = 0;
     this.selectedItems.map((item) => price += item.price );
     this.total = price;
-
   }
 
   }
