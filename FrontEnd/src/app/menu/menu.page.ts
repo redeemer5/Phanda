@@ -38,14 +38,13 @@ export class MenuPage implements OnInit {
   }
  
   addToCart(product) {
+  
     this.cartService.addProduct(product);
+     console.log(product);
   }
  
   openCart() {
     this.router.navigate(['cart']);
   }
-
-
-
 
 }

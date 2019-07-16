@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import {HttpservicesService} from '../services/httpservices.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,22 +10,32 @@ import { CartService } from '../services/cart.service';
 export class CartPage implements OnInit {
 
   selectedItems = [];
- 
   total = 0;
  
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,private http:HttpservicesService) { }
  
   ngOnInit() {
-    let items = this.cartService.getCart();
+    
+    let items:any = this.cartService.getCart();
     let selected = {};
-    for (let obj of items) {
-      if (selected[obj]) {
-        selected[obj].count++;
-      } else {
-        selected[obj] = {...obj, count: 1};
-      }
-    }
-    this.selectedItems = Object.keys(selected).map(key => selected[key])
-    this.total = this.selectedItems.reduce((a, b) => a + (b.count * b.price), 0);
+    
+    // for (let obj of items) {
+    //   if (selected[obj]) {
+    //     selected[obj].count++;
+    //   } else {
+    //     selected[obj] = {...obj, count: 1};
+    //   }
+    // }
+
+    this.selectedItems = items;
+
+
+    let price = 0;
+
+    this.selectedItems.map((item) => price += item.price );
+
+    this.total = price;
+
   }
-}
+
+  }

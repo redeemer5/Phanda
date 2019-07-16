@@ -19,6 +19,7 @@ import * as firebase from 'firebase';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+
  
 firebase.initializeApp(environment.firebaseConfig);
 
