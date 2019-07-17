@@ -11,6 +11,7 @@ export class CartPage implements OnInit {
 
   selectedItems = [];
   total = 0;
+  orderNumber: number;
  
   constructor(private cartService: CartService,private http:HttpservicesService) { }
  
@@ -22,6 +23,8 @@ export class CartPage implements OnInit {
     let price = 0;
     this.selectedItems.map((item) => price += item.price );
     this.total = price;
+
+    this.orderNumber = Math.floor(Math.random()*100);
   }
 
   }
