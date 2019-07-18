@@ -20,8 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
- 
 firebase.initializeApp(environment.firebaseConfig);
+
+
+// firestore stuff
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { firebaseConfig } from './credentials';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +38,11 @@ firebase.initializeApp(environment.firebaseConfig);
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+
+    // firestore
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
