@@ -54,6 +54,7 @@ export class CartPage implements OnInit {
   async fireStoreUpload()
   {
     var loading = await this.loadingCtrl.create();
+    loading.message = "Please wait !";
 
     var one:any = this.selectedItems;
 
