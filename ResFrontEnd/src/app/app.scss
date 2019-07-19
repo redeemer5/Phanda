@@ -4,3 +4,10 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+.split-pane-md.split-pane-visible>.split-pane-side {
+    min-width: 100px !important;
+    max-width: 2% !important;
+    border-right: var(--border) !important;
+    border-left: 0 !important;
+}
