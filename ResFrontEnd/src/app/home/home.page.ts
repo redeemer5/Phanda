@@ -8,7 +8,7 @@ import {FirestoreService} from '../service/firestore.service';
 })
 export class HomePage implements OnInit{
 
-  orderList:any;
+  public orderList;
 
 
   constructor(private firestoreService: FirestoreService) {}
