@@ -12,10 +12,10 @@
 <ion-content>
   <ion-card *ngFor="let order of orderList | async" routerLink="/detail/{{order.id}}">
     <ion-card-header>
-      {{ order.name }}
+      <!-- {{ order.name }} -->
     </ion-card-header>
     <ion-card-content>
-      order Name: {{ order.price }}
+      order Name: {{ order.name }}
     </ion-card-content>
   </ion-card>
 </ion-content>
