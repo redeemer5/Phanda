@@ -10,12 +10,36 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let order of orderList | async" routerLink="/detail/{{order.id}}">
+  <!-- <ion-card *ngFor="let order of orderList; let i = index;">
     <ion-card-header>
-      <!-- {{ order.name }} -->
+      View order {{ i + 1 }}
     </ion-card-header>
     <ion-card-content>
-      order Name: {{ order.name }}
+      <ul>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+      </ul>
     </ion-card-content>
+  </ion-card> -->
+
+  
+  <ion-card *ngFor="let order of orderList; let i = index;">
+    <ion-card-header>Order Number {{ i + 1 }}</ion-card-header>
+      
+    <ion-item *ngFor="let item of order.order; let j = index;" >
+     
+      <ion-icon name="wifi" slot="start"></ion-icon>
+      <ion-label>Item {{ j + 1 }}: {{ item.name }}</ion-label>
+      <ion-label>Price: R{{ item.price }}</ion-label>
+    </ion-item>
+
+   <ion-item>
+     <ion-label>
+       Total : R100 
+     </ion-label>
+   </ion-item>
+
   </ion-card>
+
 </ion-content>

@@ -13,10 +13,18 @@ export class HomePage implements OnInit{
 
   constructor(private firestoreService: FirestoreService) {}
 
+  total = 0;
+
 
   ngOnInit()
   {
-    this.orderList = this.firestoreService.getOrderList().valueChanges();
+    
+    this.firestoreService.getOrderList().valueChanges().subscribe(data => {
+      this.orderList = data;
+      console.log(data);
+      
+    });
+
   }
   
 
