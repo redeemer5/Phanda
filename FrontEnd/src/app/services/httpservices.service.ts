@@ -10,6 +10,16 @@ export class HttpservicesService {
 
 
   getMenu() {
-    return this.http.get('http://localhost:8081/getMenu');
+    return this.http.get('http://localhost:8080/getMenu');
+ }
+
+ getTrips()
+ {
+   return this.http.get('http://localhost:8080/getTrip');
+ }
+
+ getStops(des:number)
+ {
+   return this.http.get('http://localhost:8080/stop/1')
  }
 }

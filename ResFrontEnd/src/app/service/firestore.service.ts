@@ -10,6 +10,6 @@ export class FirestoreService {
   constructor(public firestore: AngularFirestore) { }
 
   getOrderList(): AngularFirestoreCollection<Order> {
-    return this.firestore.collection(`songList`);
+    return this.firestore.collection(`Order`);
   }
 }

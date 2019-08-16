@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>trip</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor = "let user of user$">
+    <ion-card routerLink="/stops/{{user.des}}">
+      <ion-card-title>{{user.trip}}</ion-card-title>
+    </ion-card>
+  </div>
+</ion-content>

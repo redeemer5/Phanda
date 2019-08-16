@@ -15,21 +15,21 @@ export class FirestoreService {
   ): Promise<void> {
     const id = this.firestore.createId();
 
-    return this.firestore.doc(`songList/${id}`).set({
+    return this.firestore.doc(`Order/${id}`).set({
       id,
       order,
     });
   }
 
   getSongList(): AngularFirestoreCollection<Order> {
-    return this.firestore.collection(`songList`);
+    return this.firestore.collection(`Order`);
   }
 
   getSongDetail(songId: string): AngularFirestoreDocument<Order> {
-    return this.firestore.collection('songList').doc(songId);
+    return this.firestore.collection('Order').doc(songId);
   }
 
   deleteSong(songId: string): Promise<void> {
-    return this.firestore.doc(`songList/${songId}`).delete();
+    return this.firestore.doc(`Order/${songId}`).delete();
   }
 }

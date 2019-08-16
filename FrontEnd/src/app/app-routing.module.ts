@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'trip', loadChildren: './trip/trip.module#TripPageModule' },
+  { path: 'stops/:id', loadChildren: './stops/stops.module#StopsPageModule' },
+
 ];
 
 @NgModule({
