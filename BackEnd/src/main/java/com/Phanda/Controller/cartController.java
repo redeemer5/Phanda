@@ -41,7 +41,7 @@ public class cartController {
 	@GetMapping("/stop/{des}")
 	public List<stopsModel> getStop(@PathVariable int des)
 	{
-		return sRepo.findBydes(des);
+		return sRepo.findBydid(des);
 	}
 	
 	@GetMapping("/getTrip")

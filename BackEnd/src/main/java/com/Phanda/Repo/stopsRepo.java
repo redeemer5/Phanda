@@ -11,6 +11,7 @@ import com.Phanda.model.stopsModel;
 @Repository
 public interface stopsRepo extends JpaRepository<stopsModel,Integer> {
 	
-	List<stopsModel> findBydes(int id);
+//	List<stopsModel> findBydes(int id);
+	List<stopsModel> findBydid(int id);
 	
 }

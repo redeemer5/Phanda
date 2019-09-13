@@ -12,37 +12,41 @@ public class destination {
 	// attributes
 	@Id
 	@GeneratedValue
-	private int des;
+	private int did;
 	private String trip;
 	
-	// gettes n setters
-		
-	public int getDes() {
-		return des;
+	
+	// getters n setters
+	public int getDid() {
+		return did;
 	}
 
-	public void setDes(int des) {
-		this.des = des;
+
+	public void setDid(int did) {
+		this.did = did;
 	}
+
 
 	public String getTrip() {
 		return trip;
 	}
 
+
 	public void setTrip(String trip) {
 		this.trip = trip;
 	}
-
-	// constructor
 	
-	public destination(int des, String trip) {
-		this.des = des;
+	// constructor
+
+	public destination(int did, String trip) {
+		this.did = did;
 		this.trip = trip;
+	}	
+	
+	// empty constructor
+	
+	public destination() {
+	
 	}
 
-	
-	// constructor
-		public destination() {
-
-		}
 }

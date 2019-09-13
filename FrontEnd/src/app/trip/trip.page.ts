@@ -6,12 +6,15 @@ import { HttpservicesService} from '../services/httpservices.service';
   templateUrl: './trip.page.html',
   styleUrls: ['./trip.page.scss'],
 })
+
+
 export class TripPage implements OnInit {
 
   user$: Object;
   users: any;
   user: string;
   users$:Object;
+
 
   constructor(public http:HttpservicesService) { }
 
@@ -20,5 +23,11 @@ export class TripPage implements OnInit {
       http => this.user$ = http
     );
   }
+
+getStops()
+{
+  var did:any;
+  console.log(did);
+}
 
 }

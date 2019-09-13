@@ -12,18 +12,18 @@ public class stopsModel {
 	// attributes
 	@Id
 	@GeneratedValue
-	private int spt;
+	private int sid;
 	private String stops;
 	private String address;
-	private int des;
+	private int did;
 	
 	// getters n setters
-	public int getSpt() {
-		return spt;
+	public int getSid() {
+		return sid;
 	}
 
-	public void setSpt(int spt) {
-		this.spt = spt;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 
 	public String getStops() {
@@ -42,31 +42,25 @@ public class stopsModel {
 		this.address = address;
 	}
 
-	public int getDes() {
-		return des;
+	public int getDid() {
+		return did;
 	}
 
-	public void setDes(int des) {
-		this.des = des;
+	public void setDid(int did) {
+		this.did = did;
 	}
 
-	
-	
+		
 	// constructor
-	
-	
-	public stopsModel(int spt, String stops, String address, int des) {
-		this.spt = spt;
+	public stopsModel(int sid, String stops, String address, int did) {
+		this.sid = sid;
 		this.stops = stops;
 		this.address = address;
-		this.des = des;
+		this.did = did;
 	}
-
+	
 	// empty constructor
 	public stopsModel() {
 
 	}
-
-		
-
 }
