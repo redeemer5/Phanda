@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpservicesService} from '../services/httpservices.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-trip',
@@ -16,7 +17,7 @@ export class TripPage implements OnInit {
   users$:Object;
 
 
-  constructor(public http:HttpservicesService) { }
+  constructor(public http:HttpservicesService, public navCtr : NavController) { }
 
   ngOnInit() {
     this.http.getTrips().subscribe(
@@ -24,10 +25,11 @@ export class TripPage implements OnInit {
     );
   }
 
-getStops()
+getStops(user)
 {
-  var did:any;
-  console.log(did);
+  let goTo = '/stops/' + user;
+  this.navCtr.navigateForward(goTo);
+  console.log(user);
 }
 
 }

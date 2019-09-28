@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms'
+
 firebase.initializeApp(environment.firebaseConfig);
 
 
@@ -39,6 +41,7 @@ import { firebaseConfig } from './credentials';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireAuthModule,
+    FormsModule,
 
     // firestore
     AngularFireModule.initializeApp(firebaseConfig),

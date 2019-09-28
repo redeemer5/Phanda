@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpservicesService {
 
   constructor(private http: HttpClient) { }
@@ -18,8 +21,13 @@ export class HttpservicesService {
    return this.http.get('http://localhost:8080/getTrip');
  }
 
- getStops(des:number)
+
+ 
+ 
+ getStops(des)
  {
-   return this.http.get('http://localhost:8080/stop/1')
+   
+   return this.http.get('http://localhost:8080/stop/' + des);
  }
+
 }
