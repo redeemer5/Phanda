@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'trip', loadChildren: './trip/trip.module#TripPageModule' },
   { path: 'stops/:id', loadChildren: './stops/stops.module#StopsPageModule' },
+  { path: 'restaurants/:id', loadChildren: './restaurants/restaurants.module#RestaurantsPageModule' },
+
 
 ];
 

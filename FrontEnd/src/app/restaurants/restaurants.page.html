@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>restaurants</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor = "let user of user$">
+    <ion-card>
+      <ion-card-title>restaurants available: {{user.restaurant_name}} <br /> address: {{user.restaurant_address}} </ion-card-title>
+    </ion-card>
+  </div>
+</ion-content>

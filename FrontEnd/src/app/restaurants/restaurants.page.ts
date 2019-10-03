@@ -3,11 +3,11 @@ import {HttpservicesService} from '../services/httpservices.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-stops',
-  templateUrl: './stops.page.html',
-  styleUrls: ['./stops.page.scss'],
+  selector: 'app-restaurants',
+  templateUrl: './restaurants.page.html',
+  styleUrls: ['./restaurants.page.scss'],
 })
-export class StopsPage implements OnInit {
+export class RestaurantsPage implements OnInit {
 
   user$:object;
   user:string;
@@ -18,12 +18,8 @@ export class StopsPage implements OnInit {
     console.log(this.id);
    }
 
-  des:number = 1;
-
-  routerParam: any;
-
   ngOnInit() {
-    this.http.getStops(this.id).subscribe(
+    this.http.getRestaurants(this.id).subscribe(
       http => { this.user$ = http;
         console.log(http);
       }
