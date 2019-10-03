@@ -37,10 +37,10 @@ public class cartController {
 	private restaurantsRepo resRepo;
 	
 	// get menu 
-	@GetMapping("/getMenu")
-	public List<cartModel> getMenu()
+	@GetMapping("/getMenu/{resid}")
+	public List<cartModel> getMenu(@PathVariable int resid)
 	{
-		return cart.findAll();
+		return cart.findByresid(resid);
 	}
 	
 	// get stops based on the destination selected

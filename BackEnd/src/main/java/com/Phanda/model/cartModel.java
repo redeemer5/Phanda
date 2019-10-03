@@ -15,6 +15,7 @@ public class cartModel {
 	private int mid;
 	private String item_name;
 	private int item_price;
+	private int resid;
 	
 	// setters and getters
 	public int getMid() {
@@ -41,16 +42,24 @@ public class cartModel {
 		this.item_price = item_price;
 	}
 
-	
+	public int getResid() {
+		return resid;
+	}
+
+	public void setResid(int resid) {
+		this.resid = resid;
+	}
+
 	// constructor
-	public cartModel(int mid, String item_name, int item_price) {
+	public cartModel(int mid, String item_name, int item_price, int resid) {
 		this.mid = mid;
 		this.item_name = item_name;
 		this.item_price = item_price;
+		this.resid = resid;
 	}
 	
 	// empty constructor
 	public cartModel() {
 
-	}
+	}	
 }

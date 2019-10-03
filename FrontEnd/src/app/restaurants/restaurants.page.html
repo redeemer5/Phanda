@@ -10,7 +10,7 @@
 <ion-content>
   <h3>restaurants available:</h3>
   <div *ngFor = "let user of user$">
-    <ion-card>
+    <ion-card (click)='getMenu(user.resid)'>
       <ion-card-title> {{user.restaurant_name}} <br /> {{user.restaurant_address}} </ion-card-title>
     </ion-card>
   </div>

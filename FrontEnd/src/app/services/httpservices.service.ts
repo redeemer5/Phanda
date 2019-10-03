@@ -12,8 +12,8 @@ export class HttpservicesService {
   constructor(private http: HttpClient) { }
 
 
-  getMenu() {
-    return this.http.get('http://localhost:8080/getMenu');
+  getMenu(id) {
+    return this.http.get('http://localhost:8080/getMenu/' + id);
  }
 
  getTrips()

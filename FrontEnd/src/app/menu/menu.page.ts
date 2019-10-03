@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { HttpservicesService} from '../services/httpservices.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class MenuPage implements OnInit {
   users: any;
   user: string;
   users$:Object;
+  id: any;
 
 
   cart = [];
@@ -26,13 +28,16 @@ export class MenuPage implements OnInit {
     centeredSlides: true
   };
  
-  constructor(private router: Router, private cartService: CartService,private http: HttpservicesService) { }
+  constructor(private router: Router, private cartService: CartService,private http: HttpservicesService, public route: ActivatedRoute) 
+  { 
+    this.id = this.route.snapshot.paramMap.get('id');
+  }
  
   ngOnInit() {
     this.items = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
     
-    this.http.getMenu().subscribe(
+    this.http.getMenu(this.id).subscribe(
       http => this.user$ = http
     );
   }
