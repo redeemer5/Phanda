@@ -15,7 +15,7 @@
   <ion-list> 
       <h4>Order number: {{orderNumber}}</h4>
     <ion-item  *ngFor="let item of selectedItems" lines="inset">
-          <p> {{ item.name }} - {{ item.price | currency:'R ':'symbol' }} </p>
+          <h5> {{ item.name }} - {{ item.price | currency:'R ':'symbol' }} </h5>
           <ion-label slot="end" text-right>{{ (item.price * item.count) | currency:'R ':'symbol' }}</ion-label>
     </ion-item>
 
