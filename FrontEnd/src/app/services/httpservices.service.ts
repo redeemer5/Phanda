@@ -33,7 +33,7 @@ export class HttpservicesService {
 
  getRestaurants(id)
  {
-   return this.http.get('' + id);
+   return this.http.get('http://localhost:8080/res/' + id);
  }
 
 }

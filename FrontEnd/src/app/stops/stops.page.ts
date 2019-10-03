@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpservicesService} from '../services/httpservices.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-stops',
@@ -13,7 +14,7 @@ export class StopsPage implements OnInit {
   user:string;
   id: any;
 
-  constructor(public http:HttpservicesService, public router: Router, public route: ActivatedRoute) {
+  constructor(public http:HttpservicesService, public router: Router, public route: ActivatedRoute, public navCtr : NavController) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
    }
@@ -29,5 +30,12 @@ export class StopsPage implements OnInit {
       }
     );
   }
+
+  getRestaurants(user)
+{
+  let goTo = '/restaurants/' + user;
+  this.navCtr.navigateForward(goTo);
+  console.log(user);
+}
 
 }
