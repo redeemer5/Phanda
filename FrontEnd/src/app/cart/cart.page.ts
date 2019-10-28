@@ -44,7 +44,7 @@ export class CartPage implements OnInit {
    // let selected = {};
     this.selectedItems = items;
     let price = 0;
-    this.selectedItems.map((item) => price += item.price );
+    this.selectedItems.map((item) => price += item.item_price );
     this.total = price;
 
     this.orderNumber = Math.floor(Math.random()*100);
