@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'paypal',
     pathMatch: 'full'
   },
   {
@@ -23,6 +23,8 @@ const routes: Routes = [
   { path: 'trip', loadChildren: './trip/trip.module#TripPageModule' },
   { path: 'stops/:id', loadChildren: './stops/stops.module#StopsPageModule' },
   { path: 'restaurants/:id', loadChildren: './restaurants/restaurants.module#RestaurantsPageModule' },
+  { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
+
 
 
 ];
