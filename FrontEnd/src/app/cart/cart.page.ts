@@ -1,3 +1,4 @@
+import { PaypalPage } from './../paypal/paypal.page';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import {HttpservicesService} from '../services/httpservices.service';
@@ -6,6 +7,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { FirestoreService } from '../services/firestore.service';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -32,11 +36,17 @@ export class CartPage implements OnInit {
               public alertCtrl: AlertController,
               public firestoreService: FirestoreService,
               public navCtrl: NavController,
-              formBuilder: FormBuilder
+              formBuilder: FormBuilder,
+              private routerr: Router
               
               ) {}
 
   
+    // go to paypal page with value
+    NextPage()
+    {
+      this.routerr.navigateByUrl('/paypal/' + this.total);
+    }
  
   ngOnInit() {
     

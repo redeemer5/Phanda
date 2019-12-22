@@ -25,15 +25,26 @@ import { FormsModule } from '@angular/forms'
 firebase.initializeApp(environment.firebaseConfig);
 
 
+
+
 // firestore stuff
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { firebaseConfig } from './credentials';
 
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: 
+  [
+    AppComponent
+  ],
+
+  entryComponents: 
+  [
+    AppComponent,
+  ],
+
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -42,7 +53,7 @@ import { firebaseConfig } from './credentials';
     AppRoutingModule,
     AngularFireAuthModule,
     FormsModule,
-
+    
     // firestore
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,

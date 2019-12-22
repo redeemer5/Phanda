@@ -2,8 +2,10 @@ import { Component, OnInit,AfterViewChecked } from '@angular/core';
 import { promise } from 'protractor';
 import { resolve } from 'path';
 import { reject } from 'q';
+import { ActivatedRoute } from '@angular/router';
 
 declare let paypal:any;
+
 
 @Component({
   selector: 'app-paypal',
@@ -14,20 +16,26 @@ declare let paypal:any;
 
 export class PaypalPage implements OnInit, AfterViewChecked {
 
-  constructor() { }
+  total:any;
+  
+  constructor(private route: ActivatedRoute) {}
+  
 
   ngOnInit() {
+    let amount = this.route.snapshot.paramMap.get('amount');
+    this.total = amount;
+    console.log(this.total);
   }
 
   addScript: boolean =false;
   paypalLoad:boolean = true;
-  finalAmount: number = 1;
+  finalAmount: number;
 
   paypalConfig = {
-    env:  'sandbox',
+    env:  'production',
     client:{
       sandbox:'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
-      production:''
+      production:'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'
     },
     commit:true,
     payment: (data, actions) =>
@@ -35,7 +43,7 @@ export class PaypalPage implements OnInit, AfterViewChecked {
       return actions.payment.create({
         payment:{
           transactions:[
-            {amount: {total: this.finalAmount,currency: 'USD'}}
+            {amount: {total: this.total,currency: 'USD'}}
           ]
         }
       });

@@ -12,9 +12,17 @@ export class StopsPage implements OnInit {
 
   user$:object;
   user:string;
-  id: any;
+  id:any;
 
-  constructor(public http:HttpservicesService, public router: Router, public route: ActivatedRoute, public navCtr : NavController) {
+  constructor
+  (
+    public http:HttpservicesService, 
+    public router: Router, 
+    public route: ActivatedRoute, 
+    public navCtr : NavController
+  ) 
+  
+  {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
    }
