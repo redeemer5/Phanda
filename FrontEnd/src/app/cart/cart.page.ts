@@ -46,6 +46,7 @@ export class CartPage implements OnInit {
     NextPage()
     {
       this.routerr.navigateByUrl('/paypal/' + this.total);
+      // this.fireStoreUpload();
     }
  
   ngOnInit() {
@@ -73,7 +74,7 @@ export class CartPage implements OnInit {
     .then(
       () => {
         loading.dismiss().then(() => {
-          this.navCtrl.navigateForward("/home");
+          // this.navCtrl.navigateForward("/home");
         });
       },
       error => {

@@ -3,6 +3,7 @@ import { promise } from 'protractor';
 import { resolve } from 'path';
 import { reject } from 'q';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
 
 declare let paypal:any;
 
@@ -16,15 +17,28 @@ declare let paypal:any;
 
 export class PaypalPage implements OnInit, AfterViewChecked {
 
-  total:any;
+  total:number;
+  convert:number;
+  sum:number;
   
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private http: HttpClient) {}
   
 
-  ngOnInit() {
+  ngOnInit() 
+  {
     let amount = this.route.snapshot.paramMap.get('amount');
-    this.total = amount;
-    console.log(this.total);
+    this.total = +amount;
+
+    // console.log(this.total)
+
+    setInterval(() => {
+      this.http.get<any>('https://api.exchangerate-api.com/v4/latest/USD')
+    .subscribe(data => {
+      this.convert = data.rates.ZAR;
+      this.sum = this.total / this.convert;
+     console.log(this.sum)
+    });
+    }, 10000)
   }
 
   addScript: boolean =false;
@@ -32,7 +46,7 @@ export class PaypalPage implements OnInit, AfterViewChecked {
   finalAmount: number;
 
   paypalConfig = {
-    env:  'production',
+    env:  'sandbox',
     client:{
       sandbox:'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
       production:'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'
@@ -43,7 +57,7 @@ export class PaypalPage implements OnInit, AfterViewChecked {
       return actions.payment.create({
         payment:{
           transactions:[
-            {amount: {total: this.total,currency: 'USD'}}
+            {amount: {total: this.sum.toFixed(2),currency: 'USD'}}
           ]
         }
       });
