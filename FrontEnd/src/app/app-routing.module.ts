@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'trip', loadChildren: './trip/trip.module#TripPageModule' },
   { path: 'stops/:id', loadChildren: './stops/stops.module#StopsPageModule' },
   { path: 'restaurants/:id', loadChildren: './restaurants/restaurants.module#RestaurantsPageModule' },
-  { path: 'paypal/:amount', loadChildren: './paypal/paypal.module#PaypalPageModule' },
+  { path: 'paypal/:amount', loadChildren: './paypal/paypal.module#PaypalPageModule' },  { path: 'reg', loadChildren: './reg/reg.module#RegPageModule' },
+
 ];
 
 @NgModule({

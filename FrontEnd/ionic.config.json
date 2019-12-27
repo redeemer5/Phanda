@@ -1,5 +1,7 @@
 {
   "name": "Phanda",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

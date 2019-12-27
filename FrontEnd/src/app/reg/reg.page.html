@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reg</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input [(ngModel)]="data.name" placeholder="Enter Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="data.surname" placeholder="Enter Surname"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="data.cell" placeholder="Enter Cell"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="data.email" placeholder="Enter Email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="data.password" placeholder="Enter Password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="submitForm()">Register user</ion-button>
+  </ion-item>
+</ion-content>

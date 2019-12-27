@@ -11,6 +11,8 @@ export class ProfilePage implements OnInit {
 
 
   userEmail: string;
+  userName :string;
+  PhoneNumber:string;
 
 
   constructor(private navCtrl: NavController,
