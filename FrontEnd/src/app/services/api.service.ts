@@ -45,6 +45,11 @@ export class ApiService {
       )
   }
 
+  getNameAndPassword(name,email)
+  {
+    return this.http.get('http://localhost:8080/getUserDetails/' + name + '/' + email);
+  }
+
 
    // Get single student data by ID
   //  getItem(id): Observable<Student> {
