@@ -30,6 +30,7 @@ export class CartPage implements OnInit {
 
   // hold current user data
   userData: any = {};
+  
 
   constructor(private cartService: CartService,
     private http: HttpservicesService,
@@ -53,11 +54,12 @@ export class CartPage implements OnInit {
   // go to paypal page with value
   NextPage() {
     // this.routerr.navigateByUrl('/paypal/' + this.total);
-    // this.fireStoreUpload();
     let serverData = {
       total: this.total,
       email: this.userData.email,
-      items: this.selectedItems
+      name: this.userData.name,
+      cell:this.userData.cell
+      // items: this.selectedItems
     }
 
     console.log(serverData);
