@@ -64,9 +64,8 @@ export class CartPage implements OnInit {
     this.today = now.toISOString();
     // this.routerr.navigateByUrl('/paypal/' + this.total);
     let serverData = {
-
       // user side info
-      date: this.today,
+      // date: this.today,
       name: this.userData.name,
       surname: this.userData.surname,
       cell:this.userData.cell,
@@ -80,15 +79,13 @@ export class CartPage implements OnInit {
       // items: this.selectedItems      
     }
 
-    console.log(serverData);
+    this.http.postOrder(serverData).subscribe((response) =>{
 
+    });    
   }
 
-  
-  
 
   ngOnInit() {
-
 
     let items: any = this.cartService.getCart();
     // let selected = {};
@@ -100,9 +97,6 @@ export class CartPage implements OnInit {
     this.orderNumber = Math.floor(Math.random() * 100);
 
     // console.log(this.userData.name,this.userData.email);
-
-    
-
   }
 
   // async fireStoreUpload() {
