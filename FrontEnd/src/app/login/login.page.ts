@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
   Login() {
     this.httpCall.getNameAndPassword(this.name, this.email).subscribe(async (httpCall: any) => {
       this.user$ = await httpCall;
-      console.log(this.user$);
+      // console.log(this.user$);
 
       if (this.user$.length > 0) {
         // navigate to the next page

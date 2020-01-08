@@ -30,6 +30,7 @@ export class CartPage implements OnInit {
 
   // hold current user data
   userData: any = {};
+  resData: any = {};
   
 
   constructor(private cartService: CartService,
@@ -48,6 +49,10 @@ export class CartPage implements OnInit {
     if (localStorage.getItem('userData') !== undefined) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
     }
+
+    if (localStorage.getItem('resData') !== undefined) {
+      this.resData = JSON.parse(localStorage.getItem('resData'));
+    }
   }
 
 
@@ -55,10 +60,18 @@ export class CartPage implements OnInit {
   NextPage() {
     // this.routerr.navigateByUrl('/paypal/' + this.total);
     let serverData = {
-      total: this.total,
-      email: this.userData.email,
+
+      // user side info
       name: this.userData.name,
-      cell:this.userData.cell
+      surname: this.userData.surname,
+      cell:this.userData.cell,
+      email: this.userData.email,
+      
+      // restuarant side info
+      resName: this.resData.restaurant_name,
+      resNo: this.resData.restaurant_phone_number,
+      orderNo: this.orderNumber,
+      total: this.total,
       // items: this.selectedItems
     }
 
@@ -77,32 +90,32 @@ export class CartPage implements OnInit {
 
     this.orderNumber = Math.floor(Math.random() * 100);
 
-    console.log(this.userData.name,this.userData.email);
+    // console.log(this.userData.name,this.userData.email);
 
   }
 
-  async fireStoreUpload() {
-    var loading = await this.loadingCtrl.create();
-    loading.message = "Please wait !";
+  // async fireStoreUpload() {
+  //   var loading = await this.loadingCtrl.create();
+  //   loading.message = "Please wait !";
 
-    var one: any = this.selectedItems;
+  //   var one: any = this.selectedItems;
 
-    this.firestoreService
-      .createSong(one)
-      .then(
-        () => {
-          loading.dismiss().then(() => {
-            // this.navCtrl.navigateForward("/home");
-          });
-        },
-        error => {
-          console.error(error);
-        }
-      );
-    console.log(this.selectedItems);
+  //   this.firestoreService
+  //     .createSong(one)
+  //     .then(
+  //       () => {
+  //         loading.dismiss().then(() => {
+  //           // this.navCtrl.navigateForward("/home");
+  //         });
+  //       },
+  //       error => {
+  //         console.error(error);
+  //       }
+  //     );
+  //   console.log(this.selectedItems);
 
-    return await loading.present();
+  //   return await loading.present();
 
-  }
+  // }
 
 }

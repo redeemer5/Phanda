@@ -18,6 +18,7 @@ export class MenuPage implements OnInit {
   users$:Object;
   id: any;
 
+  res$:any[];
 
   cart = [];
   items = [];
@@ -40,6 +41,8 @@ export class MenuPage implements OnInit {
     this.http.getMenu(this.id).subscribe(
       http => this.user$ = http
     );
+
+    this.getResInfo();
   }
  
   addToCart(product) {
@@ -50,4 +53,11 @@ export class MenuPage implements OnInit {
     this.router.navigate(['cart']);
   }
 
+  getResInfo()
+  {
+    this.http.getResInfo(this.id).subscribe( async (httpCall: any) =>{
+      this.res$ = await httpCall;  
+      localStorage.setItem('resData',JSON.stringify(this.res$));
+    });
+  }
 }

@@ -36,4 +36,10 @@ export class HttpservicesService {
    return this.http.get('http://localhost:8080/res/' + id);
  }
 
+ 
+ getResInfo(resid)
+ {
+  return this.http.get('http://localhost:8080/resinfo/' + resid); 
+ }
+
 }
