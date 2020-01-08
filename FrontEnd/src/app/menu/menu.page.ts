@@ -47,6 +47,7 @@ export class MenuPage implements OnInit {
  
   addToCart(product) {
     this.cartService.addProduct(product);
+  
   }
  
   openCart() {

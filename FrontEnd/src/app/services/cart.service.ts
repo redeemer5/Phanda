@@ -49,5 +49,9 @@ export class CartService {
     this.cart.push(product);
   }
 
+  removeProduct(){
+    this.cart.pop();
+  }
+
   
 }

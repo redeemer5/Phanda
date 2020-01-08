@@ -39,14 +39,17 @@
 
 
       <ion-item-options>
-        <ion-item-option color="primary">
-          <ion-icon slot="start" name="delete"></ion-icon>
+
+        <ion-item-option color="primary" (click)="remove()">
+          <ion-icon slot="start" name="delete" ></ion-icon>
           Delete
         </ion-item-option>
+
         <ion-item-option color="secondary">
           <ion-icon slot="start" name="archive"></ion-icon>
           Archive
         </ion-item-option>
+
       </ion-item-options>
     </ion-item-sliding>
 

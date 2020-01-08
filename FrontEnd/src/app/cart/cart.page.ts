@@ -173,7 +173,10 @@ ngAfterViewChecked():void{
   // paypal code end
 
 
-
+  remove(product)
+  {
+    this.cartService.removeProduct();
+  }
 
 
 
