@@ -67,8 +67,6 @@ export class PaypalPage implements OnInit, AfterViewChecked {
     {
       return actions.payment.execute().then((payment) =>{
         // redirect user when the payment is done
-        let name="redeemer";
-        console.log(name);
         
       })
     }

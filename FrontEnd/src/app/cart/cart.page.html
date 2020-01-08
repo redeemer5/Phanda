@@ -52,11 +52,15 @@
 
   </ion-list>
 
-  <ion-item>
+  <!-- <ion-item>
     Total: <span slot="end">{{ total | currency:'R ':'symbol' }}</span>
-  </ion-item>
+  </ion-item> -->
 
-  <ion-button expand="block" margin (click)="fireStoreUpload()">Checkout</ion-button>
+  <h3>your total price is</h3>
+  <ion-label>R {{total}} </ion-label>
+  <div id="paypal-checkout-btn"></div>
 
-  <ion-button (click)="NextPage()">next page with data</ion-button>
+  <!-- <ion-button expand="block" margin (click)="fireStoreUpload()">Checkout</ion-button>
+
+  <ion-button (click)="NextPage()">next page with data</ion-button> -->
 </ion-content>

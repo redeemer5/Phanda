@@ -1,5 +1,5 @@
 import { PaypalPage } from './../paypal/paypal.page';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewChecked } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { HttpservicesService } from '../services/httpservices.service';
 //firestore
@@ -8,6 +8,9 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { FirestoreService } from '../services/firestore.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
+
+declare let paypal:any;
 
 
 
@@ -17,7 +20,11 @@ import { Router } from '@angular/router';
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
 })
-export class CartPage implements OnInit {
+export class CartPage implements OnInit, AfterViewChecked {
+
+  
+  convert:number;
+  sum:number;
 
   //firestore declarations
   createSongForm: FormGroup;
@@ -28,13 +35,13 @@ export class CartPage implements OnInit {
   total = 0;
   orderNumber: number;
 
-  // hold current user data
+  // hold current user and restaurant data
   userData: any = {};
   resData: any = {};
   
 
   constructor(private cartService: CartService,
-    private http: HttpservicesService,
+    private http: HttpservicesService,private httpc:HttpClient,
 
     //firestore
     public loadingCtrl: LoadingController,
@@ -78,7 +85,7 @@ export class CartPage implements OnInit {
       total: this.total,
 
       // to get what the user has orderd uncomment the code below
-      
+
       // items: this.selectedItems      
     }
     this.http.postOrder(serverData).subscribe((response) =>{
@@ -87,18 +94,88 @@ export class CartPage implements OnInit {
 
 
   ngOnInit() {
+    // api call to convert the rates
+    setInterval(() => {
+      this.httpc.get<any>('https://api.exchangerate-api.com/v4/latest/USD')
+    .subscribe(data => {
+      this.convert = data.rates.ZAR;
+      this.sum = this.total / this.convert;
+    //  console.log(this.sum)
+    });
+    }, 10000)
+    // api call to convert the rates
 
+    // get pushed items from the array
     let items: any = this.cartService.getCart();
     // let selected = {};
     this.selectedItems = items;
     let price = 0;
     this.selectedItems.map((item) => price += item.item_price);
     this.total = price;
-
     this.orderNumber = Math.floor(Math.random() * 100);
-
-    // console.log(this.userData.name,this.userData.email);
+    // get pushed items from the array
   }
+
+  // paypal code start
+  addScript: boolean =false;
+  paypalLoad:boolean = true;
+  finalAmount: number;
+
+  paypalConfig = {
+    env:  'production',
+    client:{
+      sandbox:'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
+      production:'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'
+    },
+    commit:true,
+    payment: (data, actions) =>
+    {
+      return actions.payment.create({
+        payment:{
+          transactions:[
+            {amount: {total: this.sum.toFixed(2),currency: 'USD'}}
+          ]
+        }
+      });
+    },
+
+    onAuthorize: (data, actions) =>
+    {
+      return actions.payment.execute().then((payment) =>{
+        // redirect user when the payment is done
+        this.NextPage();
+        
+      })
+    }
+  };
+
+ngAfterViewChecked():void{
+  if(!this.addScript)
+  {
+    this.addPaypalScript().then(()=>{
+      paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn')
+      this.paypalLoad = false;
+    })
+  }
+}
+
+  addPaypalScript()
+  {
+    this.addScript= true;
+    return new Promise((resolve,reject)=>{
+    let scripttagElement = document.createElement('script');
+    scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+    scripttagElement.onload = resolve;
+    document.body.appendChild(scripttagElement);
+    })
+  }
+
+  // paypal code end
+
+
+
+
+
 
   // async fireStoreUpload() {
   //   var loading = await this.loadingCtrl.create();
