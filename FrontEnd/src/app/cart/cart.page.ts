@@ -65,7 +65,7 @@ export class CartPage implements OnInit {
     // this.routerr.navigateByUrl('/paypal/' + this.total);
     let serverData = {
       // user side info
-      // date: this.today,
+      date: this.today,
       name: this.userData.name,
       surname: this.userData.surname,
       cell:this.userData.cell,

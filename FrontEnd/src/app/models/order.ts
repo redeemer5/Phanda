@@ -1,5 +1,6 @@
 export class Order {
     orid:number;
+    date:string;
     name:string;
     surname:string;
     cell:string;
