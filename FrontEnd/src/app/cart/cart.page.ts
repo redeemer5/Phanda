@@ -55,13 +55,18 @@ export class CartPage implements OnInit {
     }
   }
 
+  today;
 
   // go to paypal page with value
   NextPage() {
+
+    const now = new Date();
+    this.today = now.toISOString();
     // this.routerr.navigateByUrl('/paypal/' + this.total);
     let serverData = {
 
       // user side info
+      date: this.today,
       name: this.userData.name,
       surname: this.userData.surname,
       cell:this.userData.cell,
@@ -72,14 +77,18 @@ export class CartPage implements OnInit {
       resNo: this.resData.restaurant_phone_number,
       orderNo: this.orderNumber,
       total: this.total,
-      // items: this.selectedItems
+      // items: this.selectedItems      
     }
 
     console.log(serverData);
 
   }
 
+  
+  
+
   ngOnInit() {
+
 
     let items: any = this.cartService.getCart();
     // let selected = {};
@@ -91,6 +100,8 @@ export class CartPage implements OnInit {
     this.orderNumber = Math.floor(Math.random() * 100);
 
     // console.log(this.userData.name,this.userData.email);
+
+    
 
   }
 
