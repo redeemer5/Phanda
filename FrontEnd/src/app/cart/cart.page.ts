@@ -72,15 +72,13 @@ export class CartPage implements OnInit {
       email: this.userData.email,
       
       // restuarant side info
-      resName: this.resData.restaurant_name,
-      resNo: this.resData.restaurant_phone_number,
-      orderNo: this.orderNumber,
+      restuarant: this.resData.restaurant_name,
+      restuarantno: this.resData.restaurant_phone_number,
+      orderno: this.orderNumber.toString(),
       total: this.total,
       // items: this.selectedItems      
     }
-
     this.http.postOrder(serverData).subscribe((response) =>{
-
     });    
   }
 
