@@ -76,6 +76,9 @@ export class CartPage implements OnInit {
       restuarantno: this.resData.restaurant_phone_number,
       orderno: this.orderNumber.toString(),
       total: this.total,
+
+      // to get what the user has orderd uncomment the code below
+      
       // items: this.selectedItems      
     }
     this.http.postOrder(serverData).subscribe((response) =>{
