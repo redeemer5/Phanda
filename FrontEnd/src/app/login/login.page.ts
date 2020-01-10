@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
         // saves user data on the local storage
         localStorage.setItem('userData', JSON.stringify(this.user$[0]));
       } else {
-        this.ErrorMessage = 'username or password incorrect';
+        this.ErrorMessage = 'Username or password incorrect';
       }
 
     });

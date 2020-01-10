@@ -1,0 +1,25 @@
+ion-input
+{
+    border-radius: 25px;
+    border: 2px solid lightgray;
+    padding: 20px;
+    color: black;
+}
+
+ion-card-title, ion-card-subtitle
+{
+    text-align: center;
+    color: black;
+}
+
+ion-card
+{
+    color: black;
+    opacity: 0.8;
+    margin-top: 200px;
+    background-color: white;
+}
+
+ion-content {
+    --background: url(../../assets/newCoffee.jpg) no-repeat center/cover fixed;
+  }
