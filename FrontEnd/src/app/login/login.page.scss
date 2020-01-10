@@ -6,10 +6,13 @@ ion-input
     color: black;
 }
 
-ion-card-title, ion-card-subtitle
+ion-card-title
 {
-    text-align: center;
-    color: black;
+    background-image: url('../../assets/phanda.jpeg');
+    width: auto;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 ion-card

@@ -16,32 +16,18 @@
 
 <ion-row>
   <ion-col size="12">
-    <p>welcome to phanda app</p>
-    <p>please choose what you want to do from the options below</p>
+    <ion-card>
+      <ion-card-title>Welcome to Phanda</ion-card-title>
+      <ion-card-subtitle>Please choose what you want to do from the options below</ion-card-subtitle>
+    </ion-card>
   </ion-col>
 </ion-row>
 
-  <ion-row>
+<ion-button routerLink="/trip" expand="block">Order</ion-button>
+<ion-button expand="block">Eat-in</ion-button>
 
-    <ion-col>
-      <ion-card>
-        <ion-card-content>
-            <img src="../../assets/road.jpg">
-            <ion-card-subtitle>Eat in</ion-card-subtitle>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
 
-    <ion-col>
-        <ion-card routerLink="/trip">
-          <ion-card-content>
-              <img src="../../assets/road.jpg">
-              <ion-card-subtitle>Order</ion-card-subtitle>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-  </ion-row>
+  
 </ion-grid>
 
 </ion-content>

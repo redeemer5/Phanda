@@ -33,7 +33,8 @@ export class CartPage implements OnInit, AfterViewChecked {
   // array, total, and order number declaration
   selectedItems = [];
   total = 0;
-  orderNumber: number;
+  // orderNumber: number;
+  orderNumber:number = Math.floor(Math.random() * 100);
 
   // hold current user and restaurant data
   userData: any = {};
@@ -94,26 +95,33 @@ export class CartPage implements OnInit, AfterViewChecked {
 
 
   ngOnInit() {
-    // api call to convert the rates
-    setInterval(() => {
-      this.httpc.get<any>('https://api.exchangerate-api.com/v4/latest/USD')
-    .subscribe(data => {
-      this.convert = data.rates.ZAR;
-      this.sum = this.total / this.convert;
-    //  console.log(this.sum)
-    });
-    }, 10000)
-    // api call to convert the rates
+    this.getCartInfo();
+  }
 
-    // get pushed items from the array
-    let items: any = this.cartService.getCart();
-    // let selected = {};
-    this.selectedItems = items;
-    let price = 0;
-    this.selectedItems.map((item) => price += item.item_price);
-    this.total = price;
-    this.orderNumber = Math.floor(Math.random() * 100);
-    // get pushed items from the array
+  
+
+  getCartInfo()
+  {
+        // api call to convert the rates
+        setInterval(() => {
+          this.httpc.get<any>('https://api.exchangerate-api.com/v4/latest/USD')
+        .subscribe(data => {
+          this.convert = data.rates.ZAR;
+          this.sum = this.total / this.convert;
+        //  console.log(this.sum)
+        });
+        }, 10000)
+        // api call to convert the rates
+    
+        // get pushed items from the array
+        let items: any = this.cartService.getCart();
+        // let selected = {};
+        this.selectedItems = items;
+        let price = 0;
+        this.selectedItems.map((item) => price += item.item_price);
+        this.total = price;
+        
+        // get pushed items from the array
   }
 
   // paypal code start
@@ -176,6 +184,7 @@ ngAfterViewChecked():void{
   remove(product)
   {
     this.cartService.removeProduct();
+    this.getCartInfo();
   }
 
 
