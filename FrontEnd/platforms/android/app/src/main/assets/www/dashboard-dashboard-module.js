@@ -58,7 +58,7 @@ var DashboardPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      Home\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n \r\n<ion-content padding>\r\n\r\n\r\n<ion-grid>\r\n\r\n<ion-row>\r\n  <ion-col size=\"12\">\r\n    <p>welcome to phanda app</p>\r\n    <p>please choose what you want to do from the options below</p>\r\n  </ion-col>\r\n</ion-row>\r\n\r\n  <ion-row>\r\n\r\n    <ion-col>\r\n      <ion-card>\r\n        <ion-card-content>\r\n            <img src=\"../../assets/road.jpg\">\r\n            <ion-card-subtitle>Eat in</ion-card-subtitle>\r\n        </ion-card-content>\r\n      </ion-card>\r\n    </ion-col>\r\n\r\n    <ion-col>\r\n        <ion-card routerLink=\"/trip\">\r\n          <ion-card-content>\r\n              <img src=\"../../assets/road.jpg\">\r\n              <ion-card-subtitle>Order</ion-card-subtitle>\r\n          </ion-card-content>\r\n        </ion-card>\r\n      </ion-col>\r\n\r\n  </ion-row>\r\n</ion-grid>\r\n\r\n</ion-content>\r\n\r\n<!-- <ion-footer (click)=\"logout()\">\r\n  <ion-toolbar color=\"secondary\">\r\n    <ion-title>Log out</ion-title>\r\n  </ion-toolbar>\r\n</ion-footer> -->"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      Home\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n \r\n<ion-content padding>\r\n\r\n\r\n<ion-grid>\r\n\r\n<ion-row>\r\n  <ion-col size=\"12\">\r\n    <ion-card>\r\n      <ion-card-title>Welcome to Phanda</ion-card-title>\r\n      <ion-card-subtitle>Please choose what you want to do from the options below</ion-card-subtitle>\r\n    </ion-card>\r\n  </ion-col>\r\n</ion-row>\r\n\r\n<ion-button routerLink=\"/trip\" expand=\"block\">Order</ion-button>\r\n<ion-button expand=\"block\">Eat-in</ion-button>\r\n\r\n\r\n  \r\n</ion-grid>\r\n\r\n</ion-content>\r\n\r\n<!-- <ion-footer (click)=\"logout()\">\r\n  <ion-toolbar color=\"secondary\">\r\n    <ion-title>Log out</ion-title>\r\n  </ion-toolbar>\r\n</ion-footer> -->"
 
 /***/ }),
 
@@ -69,7 +69,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"sta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9kYXNoYm9hcmQucGFnZS5zY3NzIn0= */"
+module.exports = "ion-card-title, ion-card-subtitle {\n  text-align: center; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL0M6XFxVc2Vyc1xcdXNlclxcRGVza3RvcFxccHJvamVjdHNcXFBoYW5kYVxcRnJvbnRFbmQvc3JjXFxhcHBcXGRhc2hib2FyZFxcZGFzaGJvYXJkLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZC10aXRsZSxpb24tY2FyZC1zdWJ0aXRsZVxyXG57XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn0iXX0= */"
 
 /***/ }),
 

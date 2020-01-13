@@ -114,12 +114,30 @@ var MenuPage = /** @class */ (function () {
         this.items = this.cartService.getProducts();
         this.cart = this.cartService.getCart();
         this.http.getMenu(this.id).subscribe(function (http) { return _this.user$ = http; });
+        this.getResInfo();
     };
     MenuPage.prototype.addToCart = function (product) {
         this.cartService.addProduct(product);
     };
     MenuPage.prototype.openCart = function () {
         this.router.navigate(['cart']);
+    };
+    MenuPage.prototype.getResInfo = function () {
+        var _this = this;
+        this.http.getResInfo(this.id).subscribe(function (httpCall) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, httpCall];
+                    case 1:
+                        _a.res$ = _b.sent();
+                        localStorage.setItem('resData', JSON.stringify(this.res$));
+                        return [2 /*return*/];
+                }
+            });
+        }); });
     };
     MenuPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

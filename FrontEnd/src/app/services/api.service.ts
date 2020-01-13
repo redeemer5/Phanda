@@ -38,7 +38,7 @@ export class ApiService {
    // post method
    createItem(item): Observable<User> {
     return this.http
-      .post<User>('http://localhost:8080/addUser', JSON.stringify(item), this.httpOptions)
+      .post<User>('http://172.20.10.2:8080/addUser', JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -47,7 +47,7 @@ export class ApiService {
 
   getNameAndPassword(name,email)
   {
-    return this.http.get('http://localhost:8080/getUserDetails/' + name + '/' + email);
+    return this.http.get('http://172.20.10.2:8080/getUserDetails/' + name + '/' + email);
   }
 
 

@@ -376,6 +376,74 @@ var blockedTags = ['script', 'style', 'iframe', 'meta', 'link', 'object', 'embed
 
 /***/ }),
 
+/***/ "./src/app/services/api.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/services/api.service.ts ***!
+  \*****************************************/
+/*! exports provided: ApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var ApiService = /** @class */ (function () {
+    function ApiService(http) {
+        this.http = http;
+        // Http Options
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json'
+            })
+        };
+    }
+    // Handle API errors
+    ApiService.prototype.handleError = function (error) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error("Backend returned code " + error.status + ", " +
+                ("body was: " + error.error));
+        }
+        // return an observable with a user-facing error message
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])('Something bad happened; please try again later.');
+    };
+    ;
+    // post method
+    ApiService.prototype.createItem = function (item) {
+        return this.http
+            .post('http://172.20.10.2:8080/addUser', JSON.stringify(item), this.httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["retry"])(2), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+    };
+    ApiService.prototype.getNameAndPassword = function (name, email) {
+        return this.http.get('http://172.20.10.2:8080/getUserDetails/' + name + '/' + email);
+    };
+    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ApiService);
+    return ApiService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/cart.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/cart.service.ts ***!
@@ -388,38 +456,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartService", function() { return CartService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+// import { Product } from './cart.service';
 
 
 var CartService = /** @class */ (function () {
     function CartService() {
         this.data = [
-            {
-                category: 'Pizza',
-                expanded: true,
-                products: [
-                    { id: 0, name: 'Salami', price: '8' },
-                    { id: 1, name: 'Classic', price: '5' },
-                    { id: 2, name: 'Tuna', price: '9' },
-                    { id: 3, name: 'Hawai', price: '7' }
-                ]
-            },
-            {
-                category: 'Pasta',
-                products: [
-                    { id: 4, name: 'Mac & Cheese', price: '8' },
-                    { id: 5, name: 'Bolognese', price: '6' }
-                ]
-            },
-            {
-                category: 'Salad',
-                products: [
-                    { id: 6, name: 'Ham & Egg', price: '8' },
-                    { id: 7, name: 'Basic', price: '5' },
-                    { id: 8, name: 'Ceaser', price: '9' }
-                ]
-            }
+        // {
+        //   category: 'Pizza',
+        //   expanded: true,
+        //   products: [
+        //     { id: 0, name: 'Salami', price: '8' },
+        //     { id: 1, name: 'Classic', price: '5' },
+        //     { id: 2, name: 'Tuna', price: '9' },
+        //     { id: 3, name: 'Hawai', price: '7' }
+        //   ]
+        // },
+        // {
+        //   category: 'Pasta',
+        //   products: [
+        //     { id: 4, name: 'Mac & Cheese', price: '8' },
+        //     { id: 5, name: 'Bolognese', price: '6' }
+        //   ]
+        // },
+        // {
+        //   category: 'Salad',
+        //   products: [
+        //     { id: 6, name: 'Ham & Egg', price: '8' },
+        //     { id: 7, name: 'Basic', price: '5' },
+        //     { id: 8, name: 'Ceaser', price: '9' }
+        //   ]
+        // }
         ];
         this.cart = [];
+        this.cartItemCount = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
     }
     CartService.prototype.getProducts = function () {
         return this.data;
@@ -429,6 +501,25 @@ var CartService = /** @class */ (function () {
     };
     CartService.prototype.addProduct = function (product) {
         this.cart.push(product);
+    };
+    CartService.prototype.removeProduct = function (product) {
+        var e_1, _a;
+        try {
+            for (var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__values"](this.cart.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
+                var _d = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_c.value, 2), index = _d[0], p = _d[1];
+                if (p.mid === product.mid) {
+                    this.cartItemCount.next(this.cartItemCount.value - p.item_price);
+                    this.cart.splice(index, 1);
+                }
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
     };
     CartService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -456,24 +547,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
 
 
 
 var HttpservicesService = /** @class */ (function () {
     function HttpservicesService(http) {
         this.http = http;
+        // Http Options
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json'
+            })
+        };
     }
+    // Handle API errors
+    HttpservicesService.prototype.handleError = function (error) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error("Backend returned code " + error.status + ", " +
+                ("body was: " + error.error));
+        }
+        // return an observable with a user-facing error message
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])('Something bad happened; please try again later.');
+    };
+    ;
     HttpservicesService.prototype.getMenu = function (id) {
-        return this.http.get('http://localhost:8080/getMenu/' + id);
+        return this.http.get('http://172.20.10.2:8080/getMenu/' + id);
     };
     HttpservicesService.prototype.getTrips = function () {
-        return this.http.get('http://localhost:8080/getTrip');
+        return this.http.get('http://172.20.10.2:8080/getTrip');
     };
     HttpservicesService.prototype.getStops = function (des) {
-        return this.http.get('http://localhost:8080/stop/' + des);
+        return this.http.get('http://172.20.10.2:8080/stop/' + des);
     };
     HttpservicesService.prototype.getRestaurants = function (id) {
-        return this.http.get('http://localhost:8080/res/' + id);
+        return this.http.get('http://172.20.10.2:8080/res/' + id);
+    };
+    HttpservicesService.prototype.getResInfo = function (resid) {
+        return this.http.get('http://172.20.10.2:8080/resinfo/' + resid);
+    };
+    //  postOrder(order)
+    //  {
+    //   return this.http.post('http://localhost:8080/order' + order);
+    //  }
+    // post method
+    HttpservicesService.prototype.postOrder = function (item) {
+        return this.http
+            .post('http://172.20.10.2:8080/userOder', JSON.stringify(item), this.httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["retry"])(2), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     HttpservicesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

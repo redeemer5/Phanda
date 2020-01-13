@@ -99,7 +99,7 @@ var PaypalPage = /** @class */ (function () {
         this.addScript = false;
         this.paypalLoad = true;
         this.paypalConfig = {
-            env: 'sandbox',
+            env: 'production',
             client: {
                 sandbox: 'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
                 production: 'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'

@@ -58,7 +58,7 @@ var ProfilePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>profile</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n    <ion-grid>\r\n        <ion-row>\r\n          <ion-col text-center>\r\n            Welcome to profile!\r\n          </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n          <ion-col text-center>\r\n            Your Registered EmailID : {{userEmail}}\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>  \r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>profile</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n    <ion-grid>\r\n        <ion-row>\r\n          <ion-col text-center>\r\n            Welcome to profile!\r\n          </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n          <ion-col text-center>\r\n            Your Registered EmailID : {{userEmail}}\r\n            <br>\r\n            your name is : {{userName}}\r\n            <br>\r\n            phone number is : {{PhoneNumber}}\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>  \r\n</ion-content>\r\n"
 
 /***/ }),
 

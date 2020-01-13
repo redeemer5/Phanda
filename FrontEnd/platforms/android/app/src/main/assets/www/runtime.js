@@ -63,7 +63,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"common":"common","cart-cart-module":"cart-cart-module","menu-menu-module":"menu-menu-module","restaurants-restaurants-module":"restaurants-restaurants-module","stops-stops-module":"stops-stops-module","trip-trip-module":"trip-trip-module","dashboard-dashboard-module":"dashboard-dashboard-module","home-home-module":"home-home-module","list-list-module":"list-list-module","paypal-paypal-module":"paypal-paypal-module","profile-profile-module":"profile-profile-module","register-register-module":"register-register-module"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"common":"common","cart-cart-module":"cart-cart-module","login-login-module":"login-login-module","menu-menu-module":"menu-menu-module","reg-reg-module":"reg-reg-module","restaurants-restaurants-module":"restaurants-restaurants-module","stops-stops-module":"stops-stops-module","trip-trip-module":"trip-trip-module","dashboard-dashboard-module":"dashboard-dashboard-module","home-home-module":"home-home-module","list-list-module":"list-list-module","paypal-paypal-module":"paypal-paypal-module","profile-profile-module":"profile-profile-module","register-register-module":"register-register-module"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

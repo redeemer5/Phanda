@@ -41,12 +41,12 @@ export class HttpservicesService {
 
 
   getMenu(id) {
-    return this.http.get('http://localhost:8080/getMenu/' + id);
+    return this.http.get('http://172.20.10.2:8080/getMenu/' + id);
  }
 
  getTrips()
  {
-   return this.http.get('http://localhost:8080/getTrip');
+   return this.http.get('http://172.20.10.2:8080/getTrip');
  }
 
 
@@ -55,19 +55,19 @@ export class HttpservicesService {
  getStops(des)
  {
    
-   return this.http.get('http://localhost:8080/stop/' + des);
+   return this.http.get('http://172.20.10.2:8080/stop/' + des);
  }
 
 
  getRestaurants(id)
  {
-   return this.http.get('http://localhost:8080/res/' + id);
+   return this.http.get('http://172.20.10.2:8080/res/' + id);
  }
 
  
  getResInfo(resid)
  {
-  return this.http.get('http://localhost:8080/resinfo/' + resid); 
+  return this.http.get('http://172.20.10.2:8080/resinfo/' + resid); 
  }
 
 //  postOrder(order)
@@ -78,7 +78,7 @@ export class HttpservicesService {
    // post method
    postOrder(item): Observable<Order> {
     return this.http
-      .post<Order>('http://localhost:8080/userOder', JSON.stringify(item), this.httpOptions)
+      .post<Order>('http://172.20.10.2:8080/userOder', JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

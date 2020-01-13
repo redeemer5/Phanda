@@ -451,6 +451,11 @@ var map = {
 		"./src/app/list/list.module.ts",
 		"list-list-module"
 	],
+	"./login/login.module": [
+		"./src/app/login/login.module.ts",
+		"common",
+		"login-login-module"
+	],
 	"./menu/menu.module": [
 		"./src/app/menu/menu.module.ts",
 		"common",
@@ -463,6 +468,11 @@ var map = {
 	"./profile/profile.module": [
 		"./src/app/profile/profile.module.ts",
 		"profile-profile-module"
+	],
+	"./reg/reg.module": [
+		"./src/app/reg/reg.module.ts",
+		"common",
+		"reg-reg-module"
 	],
 	"./register/register.module": [
 		"./src/app/register/register.module.ts",
@@ -523,28 +533,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
-    {
-        path: 'home',
-        loadChildren: './home/home.module#HomePageModule'
-    },
-    {
-        path: 'list',
-        loadChildren: './list/list.module#ListPageModule'
-    },
-    { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-    { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
-    { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
-    { path: 'menu/:id', loadChildren: './menu/menu.module#MenuPageModule' },
-    { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
-    { path: 'trip', loadChildren: './trip/trip.module#TripPageModule' },
-    { path: 'stops/:id', loadChildren: './stops/stops.module#StopsPageModule' },
-    { path: 'restaurants/:id', loadChildren: './restaurants/restaurants.module#RestaurantsPageModule' },
-    { path: 'paypal/:amount', loadChildren: './paypal/paypal.module#PaypalPageModule' },
+    { path: "", redirectTo: "login", pathMatch: "full" },
+    { path: "home", loadChildren: "./home/home.module#HomePageModule" },
+    { path: "list", loadChildren: "./list/list.module#ListPageModule" },
+    { path: "register", loadChildren: "./register/register.module#RegisterPageModule" },
+    { path: "dashboard", loadChildren: "./dashboard/dashboard.module#DashboardPageModule" },
+    { path: "cart", loadChildren: "./cart/cart.module#CartPageModule" },
+    { path: "menu/:id", loadChildren: "./menu/menu.module#MenuPageModule" },
+    { path: "profile", loadChildren: "./profile/profile.module#ProfilePageModule" },
+    { path: "trip", loadChildren: "./trip/trip.module#TripPageModule" },
+    { path: "stops/:id", loadChildren: "./stops/stops.module#StopsPageModule" },
+    { path: "restaurants/:id", loadChildren: "./restaurants/restaurants.module#RestaurantsPageModule" },
+    { path: "paypal/:amount", loadChildren: "./paypal/paypal.module#PaypalPageModule" },
+    { path: "reg", loadChildren: "./reg/reg.module#RegPageModule" },
+    { path: "login", loadChildren: "./login/login.module#LoginPageModule" }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

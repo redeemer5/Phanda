@@ -4,6 +4,7 @@ import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,7 +17,8 @@ export class LoginPage implements OnInit {
   user: string;
   users$: Object;
 
-  constructor(public httpCall: ApiService, public navCtrl:NavController) { }
+  constructor(public httpCall: ApiService, public navCtrl:NavController
+    ) { }
 
   ngOnInit() {
   }
