@@ -10,6 +10,7 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 
+
 declare let paypal:any;
 
 
@@ -42,7 +43,7 @@ export class CartPage implements OnInit, AfterViewChecked {
   
 
   constructor(private cartService: CartService,
-    private http: HttpservicesService,private httpc:HttpClient,
+    private http: HttpservicesService,private httpc:HttpClient,public alertController: AlertController,
 
     //firestore
     public loadingCtrl: LoadingController,
@@ -152,7 +153,7 @@ export class CartPage implements OnInit, AfterViewChecked {
       return actions.payment.execute().then((payment) =>{
         // redirect user when the payment is done
         this.NextPage();
-        
+        this.presentAlert();
       })
     }
   };
@@ -180,11 +181,21 @@ ngAfterViewChecked():void{
 
   // paypal code end
 
-
   remove(product)
   {
-    this.cartService.removeProduct();
+    this.cartService.removeProduct(product);
     this.getCartInfo();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      subHeader: 'All done !',
+      message: 'Your order has been accepted by the restaurant. See you soon.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 
