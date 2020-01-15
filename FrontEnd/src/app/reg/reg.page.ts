@@ -2,7 +2,7 @@ import { User } from './../models/user';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reg',
@@ -16,10 +16,12 @@ export class RegPage implements OnInit {
   constructor
   (
     public apiService: ApiService,
-    public router: Router
+    public router: Router,
   ) { this.data = new User();}
 
+
   ngOnInit() {
+    
   }
 
   submitForm() {

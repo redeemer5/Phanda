@@ -9,17 +9,10 @@
 
 <ion-content>
   
-  <!-- <div *ngFor = "let user of user$">
-    <ion-card routerLink="/stops/{{user.des}}">
-      <ion-card-title>{{user.trip}}</ion-card-title>
-    </ion-card>
-  </div> -->
-
+    <h3 style="text-align: center;">Select your trip</h3>
     <div *ngFor = "let user of user$">
     <ion-card (click)='getStops(user.did)'>
       <ion-card-title>{{user.trip}}</ion-card-title>
-      <!-- <ion-card-subtitle>{{user.did}}</ion-card-subtitle> -->
-      <!-- <ion-card-subtitle name="something" [(ngModel)]="did">{{user.did}}</ion-card-subtitle> -->
     </ion-card>
   </div>
 </ion-content>
