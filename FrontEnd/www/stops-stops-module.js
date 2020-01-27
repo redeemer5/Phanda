@@ -58,7 +58,7 @@ var StopsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>stops</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div *ngFor = \"let user of user$\">\r\n    <ion-card (click)='getRestaurants(user.sid)'>\r\n      <ion-card-title> {{user.stops}} <br /> {{user.address}} </ion-card-title>\r\n    </ion-card>\r\n  </div>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>stops</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <h3 style=\"text-align: center;\">Select your stop</h3>\r\n  <div *ngFor = \"let user of user$\">\r\n    <ion-card (click)='getRestaurants(user.sid)'>\r\n      <ion-card-title> {{user.stops}} <br /> {{user.address}} </ion-card-title>\r\n    </ion-card>\r\n  </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 

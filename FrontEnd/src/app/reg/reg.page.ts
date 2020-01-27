@@ -8,6 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
   selector: 'app-reg',
   templateUrl: './reg.page.html',
   styleUrls: ['./reg.page.scss'],
+
 })
 export class RegPage implements OnInit {
 

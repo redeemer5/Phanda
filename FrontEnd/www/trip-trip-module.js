@@ -58,7 +58,7 @@ var TripPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>trip</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  \r\n  <!-- <div *ngFor = \"let user of user$\">\r\n    <ion-card routerLink=\"/stops/{{user.des}}\">\r\n      <ion-card-title>{{user.trip}}</ion-card-title>\r\n    </ion-card>\r\n  </div> -->\r\n\r\n    <div *ngFor = \"let user of user$\">\r\n    <ion-card (click)='getStops(user.did)'>\r\n      <ion-card-title>{{user.trip}}</ion-card-title>\r\n      <!-- <ion-card-subtitle>{{user.did}}</ion-card-subtitle> -->\r\n      <!-- <ion-card-subtitle name=\"something\" [(ngModel)]=\"did\">{{user.did}}</ion-card-subtitle> -->\r\n    </ion-card>\r\n  </div>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>trip</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/dashboard\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  \r\n    <h3 style=\"text-align: center;\">Select your trip</h3>\r\n    <div *ngFor = \"let user of user$\">\r\n    <ion-card (click)='getStops(user.did)'>\r\n      <ion-card-title>{{user.trip}}</ion-card-title>\r\n    </ion-card>\r\n  </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 

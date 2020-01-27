@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 
 
+
 declare let paypal:any;
 
 
@@ -162,8 +163,14 @@ ngAfterViewChecked():void{
   if(!this.addScript)
   {
     this.addPaypalScript().then(()=>{
-      paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn')
+      if(!paypal.Buttons().render('aypal-checkout-btn'))
+      {
+        // paypal.Buttons().render(this.paypalConfig);
+              // paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn')
+      // paypal.Buttons().render( '#paypal-checkout-btn')
       this.paypalLoad = false;
+      }
+
     })
   }
 }
@@ -173,7 +180,9 @@ ngAfterViewChecked():void{
     this.addScript= true;
     return new Promise((resolve,reject)=>{
     let scripttagElement = document.createElement('script');
-    scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+    // scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+    scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=sb';
+    // scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe';
     scripttagElement.onload = resolve;
     document.body.appendChild(scripttagElement);
     })
