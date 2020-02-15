@@ -101,7 +101,6 @@ export class CartPage implements OnInit, AfterViewChecked {
   }
 
   
-
   getCartInfo()
   {
         // api call to convert the rates
@@ -110,7 +109,7 @@ export class CartPage implements OnInit, AfterViewChecked {
         .subscribe(data => {
           this.convert = data.rates.ZAR;
           this.sum = this.total / this.convert;
-        //  console.log(this.sum)
+          console.log(this.sum)
         });
         }, 10000)
         // api call to convert the rates
@@ -130,14 +129,15 @@ export class CartPage implements OnInit, AfterViewChecked {
   addScript: boolean =false;
   paypalLoad:boolean = true;
   finalAmount: number;
+  
 
   paypalConfig = {
-    env:  'production',
-    client:{
-      sandbox:'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
-      production:'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'
-    },
-    commit:true,
+    // env:  'production',
+    // client:{
+    //   sandbox:'Aeuh_e9M4o1YxR8ZXanPCLsPIxMeImL3KzTB9vvsGk9gR5ps1QqfmCeX3pn2iS_cGm8_4OizWQfSwvaM',
+    //   production:'AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe'
+    // },
+    // commit:true,
     payment: (data, actions) =>
     {
       return actions.payment.create({
@@ -163,13 +163,32 @@ ngAfterViewChecked():void{
   if(!this.addScript)
   {
     this.addPaypalScript().then(()=>{
-      if(!paypal.Buttons().render('aypal-checkout-btn'))
-      {
-        // paypal.Buttons().render(this.paypalConfig);
-              // paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn')
-      // paypal.Buttons().render( '#paypal-checkout-btn')
+      // paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn') // render the old yellow paypal button
+      // paypal.Buttons().render( '#paypal-checkout-btn');
+
+
+      let BillAmount:number = this.sum;
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          // This function sets up the details of the transaction, including the amount and line item details.
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: BillAmount,currency: 'USD'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          // This function captures the funds from the transaction.
+          return actions.order.capture().then(function(details) {
+            // This function shows a transaction success message to your buyer.
+            alert('Transaction completed by ' + details.payer.name.given_name);
+          });
+        }
+      }).render( '#paypal-checkout-btn');
+
       this.paypalLoad = false;
-      }
 
     })
   }
@@ -180,9 +199,9 @@ ngAfterViewChecked():void{
     this.addScript= true;
     return new Promise((resolve,reject)=>{
     let scripttagElement = document.createElement('script');
-    // scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
-    scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=sb';
-    // scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe';
+    // scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js'; // script element for old yellow paypal button
+    // scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=sb';
+    scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=AaTKCd3x9c3LDRB0biM3GKq2FK9s13qI_2zL68BWGrQnZEgY1L2UHAYX1NLy5VhtcrZad7_kQAVj53Xe';
     scripttagElement.onload = resolve;
     document.body.appendChild(scripttagElement);
     })

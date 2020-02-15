@@ -32,6 +32,7 @@ firebase.initializeApp(environment.firebaseConfig);
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { firebaseConfig } from './credentials';
+import { PaymentModule } from './models/payment/payment.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { firebaseConfig } from './credentials';
     AppRoutingModule,
     AngularFireAuthModule,
     FormsModule,
+    PaymentModule,
     
     // firestore
     AngularFireModule.initializeApp(firebaseConfig),
